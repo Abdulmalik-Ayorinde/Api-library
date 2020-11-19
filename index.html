@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Libray</title>
     <link rel="stylesheet" href="style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <!-- <link rel="stylesheet" href="select.css"> -->
 </head>
 <body>
     <nav>
-        <div>Api Library</div>
+        <div class="animate__animated animate__bounce animate__delay-2s">Api Library</div>
     </nav>
 
     <div class="container" id="container">
         <img src="/img/convert.png" class="hero-image">
         <!-- <div class="custom-select"> -->
-            <div class="hero_text">
-                <h3>
+            <div class="hero_text ">
+                <h3 class="animate__animated animate__bounce animate__delay-2s">
                     Search for Api To use to bring your next project alive
                 </h3>
             <select class="search" name="search" id="search">
@@ -39,10 +42,17 @@
          <div class="card">dddd</div>
          <div class="card">dddd</div>
          <div class="card">dddd</div> -->
+         <div class="loader">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
     </div>
     <div class="end" id="end">
 
     </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
