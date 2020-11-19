@@ -2,6 +2,7 @@ const select  = document.getElementById('search')
 const result  = document.getElementById('result_container')
 const count   = document.getElementById('count')
 const search   = document.getElementById('end')
+const loader    = document.querySelector('.loader')
 // const select  = document.getElementById('search')
 
 const selectVal = select.value
@@ -23,32 +24,71 @@ async function getData() {
     putIn(res)
 }
 
-function putIn(res) {
-    // const card = document.createElement('div')
-    // card.setAttribute('class', 'card')
+function proceed(){
+    loader.classList.add('show')
+
+    setTimeout(() => {
+        loader.classList.remove('show')  
+    }, 1000)
+
+    setTimeout(() => {
+        
+    
+    }, 1000)
+}
+
+async function randomData() {
+    try {
+        const data = await fetch(`${apiUrl}/random`)
+        const res = await data.json()
+
+    res.entries.forEach((item) => {
+        loader.classList.add('show')
+        setTimeout(() => {
+            loader.classList.remove('show')  
+        }, 1500)
+
+        setTimeout(() => {
+      const element = document.createElement('div')
+    element.classList.add('card')
+    if(item.Auth === "") {item.Auth = "Not Required"};
+    element.innerHTML = `
+    <h3 class='name animate__animated animate__backInUp' >${item.API}</h3>
+    <h4 class='description animate__animated animate__backInUp'>${item.Description}</h4>  
+    <h4 class='auth animate__animated animate__backInUp'>Auth Type: ${item.Auth}</h4>  
+    <h4 class='cate animate__animated animate__backInUp'>Category: ${item.Category}</h4>  
+    `
+    result.appendChild(element)
+    
+        }, 1000)
+
+})
+
+
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+async function putIn(res) {
     console.log(res)
-    count.innerHTML = ''
-    result.innerHTML = ''
+    try {
+        count.innerHTML = ''
+        result.innerHTML = ''
         count.innerHTML = `
-        Your Selection Contains ${res.count} APIs  Find Them Below
+        Your Selection Contains <b>${res.count}</b> APIs  Find Them Below
         `
-
-        // result.innerHTML = `
-        //     ${res.entries.forEach(data => {
-        //         `
-
-        //         `
-        //     })}
-        // `
 
         res.entries.forEach((item) => {
             const element = document.createElement('div')
-            element.classList.add('card')
-            if(item.Auth === "") {item.Auth = "Not Required"};
+            element.classList.add('card','animate__animated','animate__backInUp')
+            element.style.setProperty('--animate-duration', '0.5s');
+            if(item.Auth === "") {item.Auth = "None Required"};
             element.innerHTML = `
-            <h3 class='name'>${item.API}</h3>
-            <h4 class='description'>${item.Description}</h4>  
-            <h4 class='auth'>Auth Type: ${item.Auth}</h4>  
+            <h3 class='name animate__animated animate__backInUp'>${item.API}</h3>
+            <h4 class='description animate__animated animate__backInUp'>${item.Description}</h4>  
+            <h4 class='auth animate__animated animate__backInUp'>Auth Type: ${item.Auth}</h4>  
+            <h4 class='link animate__animated animate__backInUp'><a target='blank' href="${item.Link}">View Docs > </a></h4>  
             `
             result.appendChild(element)
         })
@@ -58,9 +98,12 @@ function putIn(res) {
         <div class="hero_text">
         Or Search for a particular API
         </div>
-        <input type="text" id="input">
+        <input type="text" id="input" placeholder="What Are you looking for">
         </div>
         `
+    } catch (err) {
+        console.error(err)
+    }
 }
 
 
@@ -72,8 +115,7 @@ function loopData(categories) {
         const option = document.createElement('option')
         option.setAttribute('value', `${data}`)
         option.innerHTML = `
-        <input type="search" name="search" id="search">
-        ${data}
+         ${data}
         `
         select.appendChild(option)
     })
@@ -83,3 +125,8 @@ function loopData(categories) {
 
 select.addEventListener('change', getData)
 getCategories() 
+
+
+randomData()
+randomData()
+randomData()
