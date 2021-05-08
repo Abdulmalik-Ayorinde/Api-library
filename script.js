@@ -56,7 +56,8 @@ async function randomData() {
     <h3 class='name animate__animated animate__backInUp' >${item.API}</h3>
     <h4 class='description animate__animated animate__backInUp'>${item.Description}</h4>  
     <h4 class='auth animate__animated animate__backInUp'>Auth Type: ${item.Auth}</h4>  
-    <h4 class='cate animate__animated animate__backInUp'>Category: ${item.Category}</h4>  
+    <h4 class='cate animate__animated animate__backInUp'>Category: ${item.Category}</h4>
+    <h4 class='link animate__animated animate__backInUp'><a target='blank' href="${item.Link}">View Docs > </a></h4>
     `
     result.appendChild(element)
     
