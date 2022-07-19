@@ -7,13 +7,11 @@ const loader    = document.querySelector('.loader')
 
 const selectVal = select.value
 
-console.log(selectVal)
 const apiUrl = 'https://api.publicapis.org'
 
 async function getCategories(e) {
     const data = await fetch(`${apiUrl}/categories`)
     const res = await data.json()
-    console.log(res.categories)
     loopData(res.categories)
 }
 
@@ -72,7 +70,7 @@ async function randomData() {
 }
 
 async function putIn(res) {
-    console.log(res)
+   
     try {
         count.innerHTML = ''
         result.innerHTML = ''
@@ -110,7 +108,6 @@ async function putIn(res) {
 
 
 function loopData(categories) {
-    console.log(categories)
     categories.forEach((data) => {
     //    selectData(data)
 
