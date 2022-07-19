@@ -13,7 +13,7 @@ const apiUrl = 'https://api.publicapis.org'
 async function getCategories(e) {
     const data = await fetch(`${apiUrl}/categories`)
     const res = await data.json()
-
+    console.log(res)
     loopData(res)
 }
 
