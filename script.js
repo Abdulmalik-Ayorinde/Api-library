@@ -110,6 +110,7 @@ async function putIn(res) {
 
 
 function loopData(categories) {
+    console.log(categories)
     categories.forEach((data) => {
     //    selectData(data)
 
